@@ -1,6 +1,6 @@
 # MCP tools
 
-All six tools are available to any MCP client over stdio. They do not accept raw QuickBooks documents. Ids are numeric QuickBooks ids.
+All seven tools are available to any MCP client over stdio. They do not accept raw QuickBooks documents. Ids are numeric QuickBooks ids.
 
 ## search_customers
 
@@ -22,6 +22,18 @@ Returns `count`, `limit`, `start_position`, and `customers`. Each customer inclu
 | `customer_id` | yes |
 
 Returns the same customer fields as search, for one customer.
+
+## search_items
+
+Search products and services so `create_invoice` can use an existing `item_id`.
+
+| Input | Required | Notes |
+| --- | --- | --- |
+| `name` | no | Fragment matched with `LIKE` against `Name`. |
+| `limit` | no | 1–100. Default 20. |
+| `start_position` | no | 1-based. Default 1. |
+
+Returns `count`, `limit`, `start_position`, and `items`. Each item includes `id`, `name`, `type`, `description`, `unit_price`, and `active`. Missing QuickBooks fields are `null`. `unit_price` is the QuickBooks sales price (`UnitPrice`).
 
 ## search_invoices
 

@@ -55,7 +55,7 @@ npm run build
 npm run inspect
 ```
 
-Inspector should show all six tools listed in [mcp-tools.md](mcp-tools.md). Client id and client secret must already be available. Tool calls that reach QuickBooks also need the refresh token and realm id from `npm run auth`.
+Inspector should show all seven tools listed in [mcp-tools.md](mcp-tools.md). Client id and client secret must already be available. Tool calls that reach QuickBooks also need the refresh token and realm id from `npm run auth`.
 
 ## Write lock
 

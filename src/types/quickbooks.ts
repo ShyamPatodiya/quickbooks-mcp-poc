@@ -1,3 +1,21 @@
+export interface ItemSummary {
+  id: string;
+  name: string | null;
+  type: string | null;
+  description: string | null;
+  unit_price: number | null;
+  active: boolean | null;
+}
+
+export interface QboItem {
+  Id?: string;
+  Name?: string;
+  Type?: string;
+  Description?: string;
+  UnitPrice?: number;
+  Active?: boolean;
+}
+
 export interface CustomerSummary {
   id: string;
   display_name: string | null;

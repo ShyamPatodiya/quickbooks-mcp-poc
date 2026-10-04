@@ -33,10 +33,11 @@ Confirm the tool list is exactly:
 
 1. `search_customers`
 2. `get_customer`
-3. `search_invoices`
-4. `get_invoice`
-5. `create_invoice`
-6. `get_customer_financial_summary`
+3. `search_items`
+4. `search_invoices`
+5. `get_invoice`
+6. `create_invoice`
+7. `get_customer_financial_summary`
 
 This repository's implementation did not attach Inspector to a live sandbox company. Do that locally after `npm run auth`.
 
@@ -48,7 +49,7 @@ Prerequisites: development keys in `.env`, `npm run auth` completed, and `QUICKB
 2. **Get customer.** Call `get_customer` with that `customer_id`. The display name should match the sandbox customer.
 3. **Search invoices.** Call `search_invoices` with that `customer_id`. Note an `id`, or continue at step 5 if the customer has no invoices yet.
 4. **Get invoice.** Call `get_invoice` with that `invoice_id`. Document number and total should match the invoice in QuickBooks.
-5. **Create invoice.** Call `create_invoice` with the sandbox `customer_id` and a sandbox `item_id` from the Products and Services list.
+5. **Create invoice.** Call `search_items` and copy an `id` from the sandbox product list. Call `create_invoice` with the sandbox `customer_id` and that `item_id`.
 
 ```json
 {

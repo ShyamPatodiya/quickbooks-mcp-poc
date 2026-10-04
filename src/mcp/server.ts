@@ -6,8 +6,10 @@ import { RefreshingTokenProvider } from "../quickbooks/auth/token-provider.js";
 import { QuickBooksClient } from "../quickbooks/client/quickbooks-client.js";
 import { CustomerService } from "../quickbooks/services/customer.service.js";
 import { InvoiceService } from "../quickbooks/services/invoice.service.js";
+import { ItemService } from "../quickbooks/services/item.service.js";
 import { FinancialSummaryService } from "../quickbooks/services/financial-summary.service.js";
 import { registerSearchCustomersTool } from "./tools/search-customers.tool.js";
+import { registerSearchItemsTool } from "./tools/search-items.tool.js";
 import { registerGetCustomerTool } from "./tools/get-customer.tool.js";
 import { registerSearchInvoicesTool } from "./tools/search-invoices.tool.js";
 import { registerGetInvoiceTool } from "./tools/get-invoice.tool.js";
@@ -25,6 +27,7 @@ export function createServer(config: AppConfig): McpServer {
   );
   const api = new QuickBooksClient(config, session);
   const customers = new CustomerService(api);
+  const items = new ItemService(api);
   const invoices = new InvoiceService(api, config.disableWrite);
   const summaries = new FinancialSummaryService(customers, invoices);
 
@@ -34,6 +37,7 @@ export function createServer(config: AppConfig): McpServer {
   });
   registerSearchCustomersTool(server, customers);
   registerGetCustomerTool(server, customers);
+  registerSearchItemsTool(server, items);
   registerSearchInvoicesTool(server, invoices);
   registerGetInvoiceTool(server, invoices);
   registerCreateInvoiceTool(server, invoices);

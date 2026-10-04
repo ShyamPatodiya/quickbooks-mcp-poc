@@ -8,7 +8,7 @@ The POC proves five things:
 
 1. QuickBooks Online Sandbox connectivity.
 2. An MCP server on local stdio.
-3. Standard customer and invoice tools.
+3. Standard customer, item, and invoice tools.
 4. One custom business tool, `get_customer_financial_summary`.
 5. An architecture that does not depend on Claude, OpenAI, or any other model SDK.
 
@@ -83,10 +83,11 @@ npm run inspect
 
 That runs the MCP Inspector against `node dist/index.js`. The server must be able to read `.env` from the project root, or the same variables must be present in the process environment.
 
-The Inspector should list these six tools:
+The Inspector should list these seven tools:
 
 - `search_customers`
 - `get_customer`
+- `search_items`
 - `search_invoices`
 - `get_invoice`
 - `create_invoice`
@@ -104,7 +105,7 @@ Unit tests mock QuickBooks and do not need credentials:
 npm test
 ```
 
-The manual sandbox checklist is in [docs/testing.md](docs/testing.md). `create_invoice` needs a real sandbox customer id and item id from your company. After creation, confirm the invoice in the QuickBooks sandbox UI.
+The manual sandbox checklist is in [docs/testing.md](docs/testing.md). Use `search_items` to find a sandbox item id before `create_invoice`. After creation, confirm the invoice in the QuickBooks sandbox UI.
 
 ## Limitations
 

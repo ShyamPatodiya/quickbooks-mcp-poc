@@ -18,9 +18,10 @@ The transport is replaceable. Services do not know about stdio. A later Streamab
 | Path | Responsibility |
 | --- | --- |
 | `src/index.ts` | Load config, connect `StdioServerTransport`. |
-| `src/mcp/server.ts` | Register the six tools. |
+| `src/mcp/server.ts` | Register the seven tools. |
 | `src/mcp/tools/` | Zod inputs, MCP results, calls into services. No QuickBooks HTTP. |
 | `src/quickbooks/services/customer.service.ts` | Customer search and read. |
+| `src/quickbooks/services/item.service.ts` | Item search for invoice line items. |
 | `src/quickbooks/services/invoice.service.ts` | Invoice search, read, and create payload mapping. |
 | `src/quickbooks/services/financial-summary.service.ts` | Custom summary. Uses the customer and invoice services. |
 | `src/quickbooks/client/quickbooks-client.ts` | `query`, `get`, and `post` against the sandbox host. |
