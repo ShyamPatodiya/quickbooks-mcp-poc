@@ -39,7 +39,22 @@ Confirm the tool list is exactly:
 6. `create_invoice`
 7. `get_customer_financial_summary`
 
-This repository's implementation did not attach Inspector to a live sandbox company. Do that locally after `npm run auth`.
+The POC was validated against a live QuickBooks Online Sandbox company through MCP Inspector, after `npm run auth`.
+
+## Completed sandbox validation
+
+MCP Inspector successfully validated:
+
+- OAuth authentication
+- `search_customers`
+- `get_customer`
+- `search_items`
+- `search_invoices`
+- `create_invoice`
+- `get_invoice`
+- `get_customer_financial_summary`
+
+Claude and ChatGPT were not part of that validation. `npm test` remains mocked and does not call QuickBooks.
 
 ## Sandbox smoke test
 
@@ -70,6 +85,6 @@ Prerequisites: development keys in `.env`, `npm run auth` completed, and `QUICKB
 
 If a tool returns an authentication or refresh error, run `npm run auth` again. If `create_invoice` says writes are disabled, remove `QUICKBOOKS_DISABLE_WRITE=true`.
 
-## What was not verified here
+## What this validation does not cover
 
-No Intuit credentials were available in this workspace, so live sandbox connectivity, Inspector-against-sandbox, and Claude or ChatGPT sessions were not executed.
+The live check was MCP Inspector against one QuickBooks Online Sandbox company. It does not cover Claude, ChatGPT, a remote MCP transport, or production QuickBooks.
